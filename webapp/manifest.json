@@ -79,38 +79,48 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
-            "config": {
-                "routerClass": "sap.m.routing.Router",
-                "viewType": "XML",
-                "async": true,
-                "viewPath": "enap.com.zapp_hr_get_liq.view",
-                "controlAggregation": "pages",
-                "controlId": "app",
-                "clearControlAggregation": false
-            },
-            "routes": [
-                {
-                    "name": "RouteLiquidaciones",
-                    "pattern": ":?query:",
-                    "target": [
-                        "TargetLiquidaciones"
-                    ]
-                }
-            ],
-            "targets": {
-                "TargetLiquidaciones": {
-                    "viewType": "XML",
-                    "transition": "slide",
-                    "clearControlAggregation": false,
-                    "viewId": "Liquidaciones",
-                    "viewName": "Liquidaciones"
-                }
-            }
-        }
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "enap.com.zapp_hr_get_liq.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "RouteLiquidaciones",
+					"pattern": ":?query:",
+					"target": [
+						"TargetLiquidaciones"
+					]
+				}
+			],
+			"targets": {
+				"TargetLiquidaciones": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "Liquidaciones",
+					"viewName": "Liquidaciones"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zapp_hr_get_liq/webapp",
+		"_version": "1.1.0"
 	}
 }
