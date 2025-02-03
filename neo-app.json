@@ -41,10 +41,10 @@
       "path": "/sap/opu/odata",
       "target": {
         "type": "destination",
-        "name": "CDZ_NVS",
+        "name": "CDZ",
         "entryPath": "/sap/opu/odata"
       },
-      "description": "CDZ_NVS"
+      "description": "CDZ"
     }
   ],
   "sendWelcomeFileRedirect": true
