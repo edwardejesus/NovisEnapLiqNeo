@@ -318,7 +318,7 @@ sap.ui.define([
                 pAprobarLiq.then(
                     function (oData) {
                         this.getViewModel("oViewModel").setProperty("/bActiveButtons", false);
-                        sap.m.MessageBox.success("Información Envida con exito");
+                        sap.m.MessageBox.success("Información Enviada con exito");
                     }.bind(this),
                     function (oError) {
                         this.getViewModel("oViewModel").setProperty("/bActiveButtons", false);
