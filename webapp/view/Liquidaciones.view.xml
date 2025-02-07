@@ -30,8 +30,9 @@
                         <Button text="" iconFirst="true" icon="sap-icon://media-forward" type="Accept" press="onPressAddMonth" tooltip="siguiente"/>
                     </HBox>
                     <PDFViewer source="{oViewModel>/urlPdf}" title="Liquidación" height="600px" 
-                    errorPlaceholderMessage = "PDF no puede ser cargado o no existe"
-                    displayType="Embedded"/>
+                    		   errorPlaceholderMessage = "PDF no puede ser cargado o no existe"
+                               displayType="Embedded"
+                               isTrustedSource="true"/>
                 </FlexBox>
             </ScrollContainer>
         </f:content>        <!-- DynamicPage Footer -->
