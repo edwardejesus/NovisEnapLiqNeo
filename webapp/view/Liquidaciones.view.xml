@@ -29,10 +29,24 @@
                         </Select>
                         <Button text="" iconFirst="true" icon="sap-icon://media-forward" type="Accept" press="onPressAddMonth" tooltip="siguiente"/>
                     </HBox>
+                    
+                    <Link xmlns="sap.m"
+                    	id="idLink"
+                    	text="{oDevice>/os/name} : Descargar PDF {oViewModel>/selectedMonth} / {oViewModel>/selectedYear}"
+                    	visible="{= ${oDevice>/os/name} === 'iOS' ? true : false }"
+                    	enabled="true"
+                    	target="_blank"
+                    	href="{= ${oViewModel>/urlPdf} !== '' ? ${oViewModel>/urlPdf} : '#' }" 
+                    	wrapping="true"
+                    	>
+                    </Link>
+                    
                     <PDFViewer source="{oViewModel>/urlPdf}" title="Liquidación" height="600px" 
                     		   errorPlaceholderMessage = "PDF no puede ser cargado o no existe"
                                displayType="Embedded"
-                               isTrustedSource="true"/>
+                               isTrustedSource="true"
+                               visible="{= ${oDevice>/os/name} === 'iOS' ? false : true }"
+                               />
                 </FlexBox>
             </ScrollContainer>
         </f:content>        <!-- DynamicPage Footer -->

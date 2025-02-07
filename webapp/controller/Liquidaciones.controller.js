@@ -36,6 +36,7 @@ sap.ui.define([
                 this.getView().setModel(this.oModel);
                 // Modelo JSon
                 this.getView().setModel(new JSONModel(), "oViewModel");
+                this.getView().setModel(this.getOwnerComponent().getModel('device'), "oDevice");
             },
             getYearCollection: function () {
                 const yearCollection = [];
@@ -194,6 +195,7 @@ sap.ui.define([
             getPdfLiquidacion: function () {
                 const oPersonal = this.getViewModel("oViewModel").getProperty("/Personal");
                 if (!oPersonal.Pernr) {
+                	sap.m.MessageToast.show("Nº Colaborador esta en blanco");
                     return;
                 }
                 const sYear = this.getViewModel("oViewModel").getProperty("/selectedYear");
