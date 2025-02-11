@@ -1,61 +1,65 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" controllerName="enap.com.zapp_hr_get_liq.controller.Liquidaciones" height="100%">
-    <f:DynamicPage id="dynamicPageId" headerExpanded="true" showFooter="true"> <!-- DynamicPage Title -->
-        <f:title>
-            <f:DynamicPageTitle>
-                <f:heading>
-                    <Title text="{oViewModel>/Personal/Vorna} {oViewModel>/Personal/Nachn} {oViewModel>/Personal/Nach2}"/>
-                </f:heading>                
-            </f:DynamicPageTitle>
-        </f:title>        <!-- DynamicPage Header -->
-        <f:header>
-            <f:DynamicPageHeader pinnable="true">
-                <layout:HorizontalLayout allowWrapping="true">
-                    <layout:VerticalLayout class="sapUiMediumMarginEnd">
-                        <ObjectAttribute title="Nº Colaborador" text="{oViewModel>/Personal/Pernr}"/>
-                    </layout:VerticalLayout>
-                </layout:HorizontalLayout>
-            </f:DynamicPageHeader>
-        </f:header>
-        <f:content>
-            <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
-                <FlexBox direction="Column" renderType="Div" class="sapUiSmallMargin">
-                    <HBox alignContent="Center" alignItems="Center" width="100%">
-                        <Button text="" iconFirst="true" icon="sap-icon://media-rewind" type="Reject" press="onPressMinusMonth" tooltip="anterior"/>
-                        <Select forceSelection="false" selectedKey="{oViewModel>/selectedMonth}" change="onChangeSelectMonth" items="{path: 'oViewModel>/MonthCollection', sorter: { path: 'Number' } }">
-                            <core:Item key="{oViewModel>Number}" text="{oViewModel>Name}"/>
-                        </Select>
-                        <Select forceSelection="false" selectedKey="{oViewModel>/selectedYear}" change="onChangeSelectYear" items="{ path: 'oViewModel>/YearCollection' }">
-                            <core:Item key="{oViewModel>Number}" text="{oViewModel>Name}"/>
-                        </Select>
-                        <Button text="" iconFirst="true" icon="sap-icon://media-forward" type="Accept" press="onPressAddMonth" tooltip="siguiente"/>
-                    </HBox>
-                    
-                    <Link xmlns="sap.m"
-                    	id="idLink"
-                    	text="{oDevice>/os/name} : Descargar PDF {oViewModel>/selectedMonth} / {oViewModel>/selectedYear}"
-                    	visible="{= ${oDevice>/os/name} === 'iOS' ? true : false }"
-                    	enabled="true"
-                    	target="_blank"
-                    	href="{= ${oViewModel>/urlPdf} !== '' ? ${oViewModel>/urlPdf} : '#' }" 
-                    	wrapping="true"
-                    	>
-                    </Link>
-                    
-                    <PDFViewer source="{oViewModel>/urlPdf}" title="Liquidación" height="600px" 
-                    		   errorPlaceholderMessage = "PDF no puede ser cargado o no existe"
-                               displayType="Embedded"
-                               isTrustedSource="true"
-                               visible="{= ${oDevice>/os/name} === 'iOS' ? false : true }"
-                               />
-                </FlexBox>
-            </ScrollContainer>
-        </f:content>        <!-- DynamicPage Footer -->
-        <f:footer>
-            <OverflowToolbar>
-                <ToolbarSpacer/>
-                <Button type="Accept" text="Aceptar" press="onButtonPressAceptar" enabled="{oViewModel>/bActiveButtons}"/>
-                <Button type="Emphasized" text="Observar" press="onButtonPressObservar" enabled="{oViewModel>/bActiveButtons}"/>
-            </OverflowToolbar>
-        </f:footer>
-    </f:DynamicPage>
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core"
+	controllerName="enap.com.zapp_hr_get_liq.controller.Liquidaciones" height="100%">
+	<f:DynamicPage id="dynamicPageId" headerExpanded="true" showFooter="true">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="{oViewModel>/Personal/Vorna} {oViewModel&gt;/Personal/Nachn} {oViewModel>/Personal/Nach2}"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<layout:HorizontalLayout allowWrapping="true">
+					<layout:VerticalLayout class="sapUiMediumMarginEnd">
+						<ObjectAttribute title="Nº Colaborador" text="{oViewModel>/Personal/Pernr}"/>
+					</layout:VerticalLayout>
+				</layout:HorizontalLayout>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+				<FlexBox direction="Column" renderType="Div" class="sapUiSmallMargin">
+					<HBox alignContent="Center" alignItems="Center" width="100%">
+						<Button text="" iconFirst="true" icon="sap-icon://media-rewind" type="Reject" press="onPressMinusMonth" tooltip="anterior"/>
+						<Select forceSelection="false" selectedKey="{oViewModel>/selectedMonth}" change="onChangeSelectMonth"
+							items="{path: 'oViewModel>/MonthCollection', sorter: { path: 'Number' } }">
+							<core:Item key="{oViewModel>Number}" text="{oViewModel>Name}"/>
+						</Select>
+						<Select forceSelection="false" selectedKey="{oViewModel>/selectedYear}" change="onChangeSelectYear"
+							items="{ path: 'oViewModel>/YearCollection' }">
+							<core:Item key="{oViewModel>Number}" text="{oViewModel>Name}"/>
+						</Select>
+						<Button text="" iconFirst="true" icon="sap-icon://media-forward" type="Accept" press="onPressAddMonth" tooltip="siguiente"/>
+					</HBox>
+					<!--<Link xmlns="sap.m" id="idLink"
+						text="{oDevice>/os/name} : Descargar Liquidación PDF {oViewModel>/selectedMonth} / {oViewModel>/selectedYear}"
+						visible="{= ${oDevice>/os/name} === 'iOS' ? true : false }" enabled="true" target="_blank"
+						href="{= ${oViewModel>/urlPdf} !== '' ? ${oViewModel>/urlPdf} : '#' }" wrapping="true" icon="sap-icon://pdf-attachment"></Link>-->
+					<VBox alignItems="Center">
+						<IllustratedMessage id="im" title="Liquidación" illustrationType="sapIllus-SimpleEmptyDoc" enableVerticalResponsiveness="false"
+							description="presiona el botón" visible="{=!${oDevice>/system/desktop}}">
+							<additionalContent>
+								<Button text="Descargar {oViewModel>/selectedMonth} / {oViewModel>/selectedYear}" press="onButtonPressDownloadPDF"
+									icon="sap-icon://pdf-attachment" enabled="{= ${oViewModel>/urlPdf} !== '' ? true :false }"/>
+							</additionalContent>
+						</IllustratedMessage>
+					</VBox>
+					<PDFViewer source="{oViewModel>/urlPdf}" title="Liquidación" height="600px" errorPlaceholderMessage="PDF no puede ser cargado o no existe"
+						displayType="Embedded" isTrustedSource="true" visible="{oDevice>/system/desktop}"/>
+					<items/>
+				</FlexBox>
+			</ScrollContainer>
+		</f:content>
+		<!-- DynamicPage Footer -->
+		<f:footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Aceptar" press="onButtonPressAceptar" enabled="{oViewModel>/bActiveButtons}"/>
+				<Button type="Emphasized" text="Observar" press="onButtonPressObservar" enabled="{oViewModel>/bActiveButtons}"/>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
 </mvc:View>
